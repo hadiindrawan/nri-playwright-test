@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { Home } from '../pages/home.page';
 
-
 test.describe('Homepage scenarios', () => {
 	let homepage: Home
 	const productName = 'jacket'

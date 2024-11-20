@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { Home } from '../pages/home.page';
 import { Product } from '../pages/product.page';
-
+import { getNumberFromCurrency } from '../utils/string-manipulation.utils';
 
 test.describe('Product scenarios', () => {
 	let homepage: Home
@@ -40,8 +40,8 @@ test.describe('Product scenarios', () => {
             const secondProductPrice = el.nth(1)
             const secondPrice = await secondProductPrice.innerText()
 
-            const numFirstPrice = parseInt(firstPrice.replace(/[^0-9.]/g, ''), 10)
-            const numSecondPrice = parseInt(secondPrice.replace(/[^0-9.]/g, ''), 10)
+            const numFirstPrice = getNumberFromCurrency(firstPrice)
+            const numSecondPrice = getNumberFromCurrency(secondPrice)
 
             expect(numFirstPrice).toBeGreaterThan(numSecondPrice)
         })
